@@ -47,25 +47,16 @@ def dragged
 	if File.directory?($items[0])
 		# 1 Folder was dragged
 		Dir::entries($items[0]).each do |item|
-			filepath = Pathname(item)
-			file_extension = filepath.basename.to_s.split('.').last
-			rundom_strings = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map { |i| i.to_a }.flatten
-			rundom_file_name = (0..64).map { rundom_strings[rand(rundom_strings.length)] }.join + '.' + file_extension
-			rundom_file_path = Pathname('/tmp/') + rundom_file_name
-			FileUtils.cp(item, rundom_file_path)
-			path << rundom_file_path.to_s
+			if item !~ /^\..*/
+				file_path = Pathname($items[0]) + item
+				path << generate_random_name_file(file_path.to_s)
+			end
+
 		end
 	else 
-		# More than 1 item dragged 
-		# Create zip of all items and name it after the first item
+		# 1 item or More than 1 item dragged 
 		$items.each do |item| 
-			filepath = Pathname(item)
-			file_extension = filepath.basename.to_s.split('.').last
-			rundom_strings = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map { |i| i.to_a }.flatten
-			rundom_file_name = (0..64).map { rundom_strings[rand(rundom_strings.length)] }.join + '.' + file_extension
-			rundom_file_path = Pathname('/tmp/') + rundom_file_name
-			FileUtils.cp(item, rundom_file_path)
-			path << rundom_file_path.to_s
+			path << generate_random_name_file(item)
 		end
 	end
 
@@ -90,4 +81,15 @@ def clicked
 		`osascript -e 'tell application "Finder"' -e 'activate' -e 'open folder\
 		POSIX file "#{@dropboxPubDir}"' -e 'end tell'`
 	end
+end
+
+def generate_random_name_file file
+	file_path = Pathname(file)
+	file_extension = file_path.basename.to_s.split('.').last
+	random_strings = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map { |i| i.to_a }.flatten
+	random_file_name = (0..64).map { random_strings[rand(random_strings.length)] }.join + '.' + file_extension
+	random_file_path = Pathname('/tmp/') + random_file_name
+	FileUtils.cp(file, random_file_path)
+
+	random_file_path.to_s
 end
