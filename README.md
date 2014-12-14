@@ -30,4 +30,4 @@ Dropboxのpublicディレクトリに画像をアップする[Dropzone3](https:/
 
 ## Licence
 
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
+[![MIT License](http://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat-square)](https://github.com/ukoasis/SendImagesToDropbox/blob/master/LICENCE)
