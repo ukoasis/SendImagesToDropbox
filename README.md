@@ -14,7 +14,7 @@ Dropboxのpublicディレクトリに画像をアップする[Dropzone3](https:/
 
 * `UserID:`に自分のdropboxのuseridを入力して`Add`を押下(useridの調べ方は[こちら](https://aptonic.com/dropzone/destinations/help/dropbox.php))
 
-![](http://dl.dropbox.com/u/287/GCSSZsJMgaouz3PW99HUfDCJ2ZZHkMd4ISZDaup8AUJERWQA5u8nxzpUoBYLbKuZ4.png)
+![](https://user-images.githubusercontent.com/165857/40582711-4b9daf8a-61b9-11e8-8982-ba0fba2127bc.png)
 
 * クリックすると、DropboxのPublicディレクトリに遷移します。
 
